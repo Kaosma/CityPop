@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { StyleSheet, View, Text, TextInput, Button } from 'react-native';
+import FlatButton from "../../Buttons/Button";
 
 export default class SearchByCountry extends Component {
 
@@ -21,14 +22,20 @@ export default class SearchByCountry extends Component {
         const { navigate } = this.props.navigation;
         return (
             <View style={styles.container}>
-                <Text>Type name of country</Text>
                 <TextInput
-                    style={{height: 40}}
+                    style={{
+                        borderWidth: 1.5,
+                        borderColor: '#005082',
+                        paddingLeft: 5,
+                        height: 40,
+                        color: '#000839',
+                    }}
                     placeholder="Country"
-                    value={this.state.country}
+                    value={this.state.city}
                     onChange={this.handleChange}
                 />
-                <Button title='Search'
+                <FlatButton 
+                    text='Search'
                 />
             </View>
         );
@@ -37,7 +44,7 @@ export default class SearchByCountry extends Component {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: '#fff',
+        backgroundColor: '#ffa41b',
         margin:50,
         alignItems: 'center',
         justifyContent: 'center',

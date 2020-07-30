@@ -22,18 +22,20 @@ export default class CityPop extends Component {
         const { navigate } = this.props.navigation;
         return (
             <View style={styles.container}>
-                
-                <Button 
-                    title='Search by city'
-                    color= '#005082'
+                <header style={{
+                    color: '#ffffff',
+                    paddingBottom: 30,
+                    fontSize: 80,
+                    fontFamily: 'Arial', 
+                    fontWeight: 'bold',}}>CityPop</header>
+                <FlatButton 
+                    text='Search by city'
                     onPress={() =>navigate('SearchByCity')}
                 />
-                <Button 
-                    title='Search by country'
-                    color= '#005082'
+                <FlatButton 
+                    text='Search by country'
                     onPress={() =>navigate('SearchByCountry')}
                 />
-                <FlatButton text='hejsan'/>
             </View>
         );
     }
