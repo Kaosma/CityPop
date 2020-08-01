@@ -24,6 +24,7 @@ export default class SearchByCountry extends Component {
             <View style={styles.container}>
                 <TextInput
                     style={{
+                        fontSize: 16,
                         borderWidth: 1.5,
                         borderColor: '#005082',
                         paddingLeft: 5,
@@ -31,11 +32,12 @@ export default class SearchByCountry extends Component {
                         color: '#000839',
                     }}
                     placeholder="Country"
-                    value={this.state.city}
+                    value={this.state.country}
                     onChange={this.handleChange}
                 />
                 <FlatButton 
                     text='Search'
+                    onPress={() => navigate('Country', {country: this.state.country})}
                 />
             </View>
         );
@@ -45,7 +47,6 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         backgroundColor: '#ffa41b',
-        margin:50,
         alignItems: 'center',
         justifyContent: 'center',
     },

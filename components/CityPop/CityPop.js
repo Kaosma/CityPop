@@ -24,7 +24,7 @@ export default class CityPop extends Component {
             <View style={styles.container}>
                 <header style={{
                     color: '#ffffff',
-                    paddingBottom: 30,
+                    paddingBottom: 25,
                     fontSize: 80,
                     fontFamily: 'Arial', 
                     fontWeight: 'bold',}}>CityPop</header>

@@ -27,6 +27,7 @@ export default class SearchByCity extends Component {
             <View style={styles.container}>
                 <TextInput
                     style={{
+                        fontSize: 16,
                         borderWidth: 1.5,
                         borderColor: '#005082',
                         paddingLeft: 5,
@@ -39,6 +40,7 @@ export default class SearchByCity extends Component {
                 />
                 <FlatButton 
                     text='Search'
+                    onPress={() => navigate('City', {city: this.state.city})}
                 />
             </View>
         );
@@ -49,7 +51,6 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         backgroundColor: '#ffa41b',
-        margin:50,
         alignItems: 'center',
         justifyContent: 'center',
     },
