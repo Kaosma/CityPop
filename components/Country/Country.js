@@ -1,5 +1,6 @@
 import React, { Component} from 'react';
 import { StyleSheet, View, Text, TextInput } from 'react-native';
+import FlatButton from "../../Buttons/Button";
 
 export default class Country extends Component {
 
@@ -8,7 +9,12 @@ export default class Country extends Component {
         super(props);
         this.state = {
             country: props.route.params.country,
-            population: 'unknown'
+            populationOne: 'unknown',
+            populationTwo: 'unknown',
+            populationThree: 'unknown',
+            cityOne: 'unknown',
+            cityTwo: 'unknown',
+            cityThree: 'unknown'
         }
         this.getCountryData(props.route.params.country);
     }
@@ -17,21 +23,47 @@ export default class Country extends Component {
         title: 'Country population',
     };
 
+    // Fetching the data from the geonames API, maxRows=1 to only get the top city search
+    getCountryData(country){
+        fetch("http://api.geonames.org/search?q="+country+"&featureClass=P&username=weknowit&type=json&orderby=population&startRow=0&maxRows=3")
+            .then(res => res.json())
+            .then(
+                (result) => {
+                    if (result.geonames && result.geonames[0] && result.geonames[1] && result.geonames[2]){
+                        this.setState({
+                            populationOne: result.geonames[0].population,
+                            cityOne: result.geonames[0].name,
+                            populationTwo: result.geonames[1].population,
+                            cityTwo: result.geonames[1].name,
+                            populationThree: result.geonames[2].population,
+                            cityThree: result.geonames[2].name
+                        })
+                    }
+                },
+                (error) => {
+                    console.log("error occured");
+                }
+            )
+    }
+
     // View structure once search is completed
     render() {
         const { navigate } = this.props.navigation;
         return (
             <View style={styles.container}>
-                <Text style={styles.header}>{this.state.country}</Text>
-                <View style={styles.countryContainer}>
-                    <Text style={styles.text}>City One</Text>
-                </View>
-                <View style={styles.countryContainer}>
-                    <Text style={styles.text}>City Two</Text>
-                </View>
-                <View style={styles.countryContainer}>
-                    <Text style={styles.text}>City Three</Text>
-                </View>
+                <Text style={styles.text}>{this.state.country}</Text>
+                <FlatButton 
+                    text={this.state.cityOne}
+                    onPress={() => navigate('City', {city: this.state.cityOne})}
+                />
+                <FlatButton 
+                    text={this.state.cityTwo}
+                    onPress={() => navigate('City', {city: this.state.cityTwo})}
+                />
+                <FlatButton 
+                    text={this.state.cityThree}
+                    onPress={() => navigate('City', {city: this.state.cityThree})}
+                />
             </View>
         );
     }
@@ -42,21 +74,12 @@ const styles = StyleSheet.create({
         flex: 1,
         backgroundColor: '#ffa41b',
         alignItems: 'center',
-        justifyContent: 'center',
     },
-    countryContainer: {
-        backgroundColor: '#005082',
-    },
-    header: {
-        marginTop: 40,
+    text: {
         color: '#005082',
         textTransform: 'uppercase',
         fontSize: 40,
-    },
-    text: {
-        marginBottom: 40,
-        color: '#ffffff',
-        fontSize: 25,
-        textTransform: 'uppercase',
+        marginBottom: 100,
+        marginTop: 40,
     },
 });
