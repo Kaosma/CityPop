@@ -49,7 +49,8 @@ export default class City extends Component {
         );
     }
 }
-// Design for the City component
+
+/// Design for the City component
 const styles = StyleSheet.create({
     container: {
         flex: 1,
@@ -77,14 +78,15 @@ const styles = StyleSheet.create({
         fontSize: 40,
     },
     text: {
-        marginBottom: 40,
+        marginTop: 10,
+        marginBottom: 30,
         color: '#ffffff',
-        fontSize: 25,
+        fontSize: 30,
         textTransform: 'uppercase',
     },
     populationText: {
         color: '#005082',
-        fontSize: 55,
+        fontSize: 60,
         marginBottom: 70,
     }
 });

@@ -23,7 +23,7 @@ export default class Country extends Component {
         title: 'Country population',
     };
 
-    // Fetching the data from the geonames API, maxRows=1 to only get the top city search
+    // Fetching the data from the geonames API, maxRows=3 to only get the top 3 populated cities
     getCountryData(country){
         fetch("http://api.geonames.org/search?q="+country+"&featureClass=P&username=weknowit&type=json&orderby=population&startRow=0&maxRows=3")
             .then(res => res.json())
@@ -68,7 +68,8 @@ export default class Country extends Component {
         );
     }
 }
-// Design for the City component
+
+/// Design for the City component
 const styles = StyleSheet.create({
     container: {
         flex: 1,

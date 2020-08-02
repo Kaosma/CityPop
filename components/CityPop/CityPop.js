@@ -24,7 +24,8 @@ export default class CityPop extends Component {
             <View style={styles.container}>
                 <header style={{
                     color: '#ffffff',
-                    paddingBottom: 25,
+                    paddingTop: 100,
+                    paddingBottom: 75,
                     fontSize: 80,
                     fontFamily: 'Arial', 
                     fontWeight: 'bold',}}>CityPop</header>
@@ -40,12 +41,12 @@ export default class CityPop extends Component {
         );
     }
 }
+
 /// Navigation screen Design
 const styles = StyleSheet.create({
     container: {
         flex: 1,
         backgroundColor: '#ffa41b',
         alignItems: 'center',
-        justifyContent: 'center',
     },
 });

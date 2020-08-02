@@ -1,12 +1,13 @@
 import React from 'react';
 import { StyleSheet, TouchableOpacity, Text, View } from 'react-native';
+import { Octicons } from '@expo/vector-icons';
 
-// Custom button
-export default function FlatButton({ text, onPress }) {
+// Custom search button
+export default function SearchButton({ text, onPress }) {
 	return (
 		<TouchableOpacity onPress={onPress}>
 			<View style={styles.button}>
-				<Text style={styles.buttonText}> { text }</Text>
+				<Octicons name='search' size={24} color='white'/>
 			</View>
 		</TouchableOpacity>
 	)
@@ -14,20 +15,14 @@ export default function FlatButton({ text, onPress }) {
 
 const styles = StyleSheet.create({
 	button: {
-		borderRadius: 3,
+		height: 50,
+		width: 50,
+		borderRadius: 25,
 		paddingVertical: 10,
 		paddingHorizontal: 10,
 		backgroundColor: '#005082',
 		marginTop: 20,
-		height: 75,
-		width: 460,
 		justifyContent: 'center',
-	},
-	buttonText: {
-		color: '#ffffff',
-		fontWeight: 'bold',
-		textTransform: 'uppercase',
-		fontSize: 30,
 		textAlign: 'center',
-	}
+	},
 })
