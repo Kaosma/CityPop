@@ -14,7 +14,8 @@ export default class Country extends Component {
             populationThree: 'unknown',
             cityOne: 'unknown',
             cityTwo: 'unknown',
-            cityThree: 'unknown'
+            cityThree: 'unknown',
+            code: 'P'
         }
         this.getCountryData(props.route.params.country);
     }
@@ -23,8 +24,29 @@ export default class Country extends Component {
         title: 'Country population',
     };
 
-    // Fetching the data from the geonames API, maxRows=3 to only get the top 3 populated cities
+    // Checking if the country input in fact gives a country from the API by checking its featureClass
     getCountryData(country){
+        fetch("http://api.geonames.org/search?q="+country+"&username=weknowit&type=json")
+            .then(res => res.json())
+            .then(
+                (result) => {
+                    if (result.geonames && result.geonames[0]){
+                        this.setState({
+                            code: result.geonames[0].fcl
+                        })
+                        if (this.state.code=='A') {
+                            this.getCitiesData(country);
+                        }
+                    }
+                },
+                (error) => {
+                    console.log("error occured");
+                }
+            )
+    }
+
+    // Fetching the data from the geonames API for the selected country, maxRows=3 to only get the top 3 populated cities
+    getCitiesData(country){
         fetch("http://api.geonames.org/search?q="+country+"&featureClass=P&username=weknowit&type=json&orderby=population&startRow=0&maxRows=3")
             .then(res => res.json())
             .then(
@@ -49,23 +71,31 @@ export default class Country extends Component {
     // View structure once search is completed
     render() {
         const { navigate } = this.props.navigation;
-        return (
-            <View style={styles.container}>
-                <Text style={styles.text}>{this.state.country}</Text>
-                <FlatButton 
-                    text={this.state.cityOne}
-                    onPress={() => navigate('City', {city: this.state.cityOne})}
-                />
-                <FlatButton 
-                    text={this.state.cityTwo}
-                    onPress={() => navigate('City', {city: this.state.cityTwo})}
-                />
-                <FlatButton 
-                    text={this.state.cityThree}
-                    onPress={() => navigate('City', {city: this.state.cityThree})}
-                />
-            </View>
-        );
+        if (this.state.cityOne=='unknown'){
+            return (
+                <View style={styles.container}>
+                    <Text style={styles.text}>no country found</Text>
+                </View>
+            )
+        } else {
+            return (
+                <View style={styles.container}>
+                    <Text style={styles.text}>{this.state.country}</Text>
+                    <FlatButton 
+                        text={this.state.cityOne}
+                        onPress={() => navigate('City', {city: this.state.cityOne})}
+                    />
+                    <FlatButton 
+                        text={this.state.cityTwo}
+                        onPress={() => navigate('City', {city: this.state.cityTwo})}
+                    />
+                    <FlatButton 
+                        text={this.state.cityThree}
+                        onPress={() => navigate('City', {city: this.state.cityThree})}
+                    />
+                </View>
+            );
+        }
     }
 }
 

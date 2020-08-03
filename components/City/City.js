@@ -8,7 +8,9 @@ export default class City extends Component {
         super(props);
         this.state = {
             city: props.route.params.city,
-            population: 'unknown'
+            population: 'unknown',
+            code: 'A',
+            name: 'default'
         }
         this.getCityData(props.route.params.city);
     }
@@ -25,9 +27,12 @@ export default class City extends Component {
                 (result) => {
                     if (result.geonames && result.geonames[0]){
                         this.setState({
-                            population: result.geonames[0].population
+                            population: result.geonames[0].population,
+                            code: result.geonames[0].fcl,
+                            city: city.toLowerCase(),
+                            name: result.geonames[0].name.toLowerCase()
                         })
-                    }
+                    } 
                 },
                 (error) => {
                     console.log("error occured");
@@ -38,15 +43,23 @@ export default class City extends Component {
     // View structure once search is completed
     render() {
         const { navigate } = this.props.navigation;
-        return (
-            <View style={styles.container}>
-                <Text style={styles.header}>{this.state.city}</Text>
-                <View style={styles.populationContainer}>
-                    <Text style={styles.text}>population</Text>
-                    <Text style={styles.populationText}>{this.state.population}</Text>
+        if(this.state.code!='P' || this.state.city!=this.state.name) {
+            return(
+                <View style={styles.container}>
+                    <Text style={styles.header}>no city found</Text>
                 </View>
-            </View>
-        );
+            );
+        } else {
+            return (
+                <View style={styles.container}>
+                    <Text style={styles.header}>{this.state.city}</Text>
+                    <View style={styles.populationContainer}>
+                        <Text style={styles.text}>population</Text>
+                        <Text style={styles.populationText}>{this.state.population}</Text>
+                    </View>
+                </View>
+            );
+        } 
     }
 }
 
