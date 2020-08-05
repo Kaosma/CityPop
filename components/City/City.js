@@ -46,7 +46,7 @@ export default class City extends Component {
         if(this.state.code!='P' || this.state.city!=this.state.name) {
             return(
                 <View style={styles.container}>
-                    <Text style={styles.header}>no city found</Text>
+                    <Text style={styles.alternateHeader}>no city found</Text>
                 </View>
             );
         } else {
@@ -86,6 +86,11 @@ const styles = StyleSheet.create({
     },
     header: {
         marginTop: 40,
+        color: '#005082',
+        textTransform: 'uppercase',
+        fontSize: 40,
+    },
+    alternateHeader: {
         color: '#005082',
         textTransform: 'uppercase',
         fontSize: 40,

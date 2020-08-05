@@ -73,8 +73,8 @@ export default class Country extends Component {
         const { navigate } = this.props.navigation;
         if (this.state.cityOne=='unknown'){
             return (
-                <View style={styles.container}>
-                    <Text style={styles.text}>no country found</Text>
+                <View style={styles.alternateContainer}>
+                    <Text style={styles.alternateText}>no country found</Text>
                 </View>
             )
         } else {
@@ -106,6 +106,12 @@ const styles = StyleSheet.create({
         backgroundColor: '#ffa41b',
         alignItems: 'center',
     },
+    alternateContainer: {
+        flex: 1,
+        backgroundColor: '#ffa41b',
+        alignItems: 'center',
+        justifyContent: 'center',
+    },
     text: {
         color: '#005082',
         textTransform: 'uppercase',
@@ -113,4 +119,9 @@ const styles = StyleSheet.create({
         marginBottom: 100,
         marginTop: 40,
     },
+    alternateText: {
+        color: '#005082',
+        textTransform: 'uppercase',
+        fontSize: 40,
+    }
 });
