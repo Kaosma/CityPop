@@ -1,5 +1,5 @@
 import React, { Component} from 'react';
-import { StyleSheet, View, Text, TextInput } from 'react-native';
+import { StyleSheet, View, Text } from 'react-native';
 import FlatButton from "../../Buttons/Button";
 
 export default class Country extends Component {

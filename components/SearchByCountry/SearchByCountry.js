@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { StyleSheet, View, Text, TextInput, Button } from 'react-native';
+import { StyleSheet, View, TextInput } from 'react-native';
 import SearchButton from "../../Buttons/SearchButton";
 
 export default class SearchByCountry extends Component {

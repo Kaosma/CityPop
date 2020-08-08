@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { StyleSheet, View, Button} from 'react-native';
+import { StyleSheet, View } from 'react-native';
 import SearchByCity from "../SearchByCity/SearchByCity";
 import SearchByCountry from "../SearchByCountry/SearchByCountry";
 import FlatButton from "../../Buttons/Button";
@@ -28,8 +28,7 @@ export default class CityPop extends Component {
                     paddingBottom: 75,
                     fontSize: 80,
                     fontFamily: 'Arial', 
-                    fontWeight: 'bold',}}>CityPop
-                </header>
+                    fontWeight: 'bold',}}>CityPop</header>
                 <FlatButton 
                     text='Search by city'
                     onPress={() =>navigate('SearchByCity')}
