@@ -12,8 +12,8 @@ export default class SearchByCountry extends Component {
     }
 
     // Event state change handler upon changing the value of the country
-    handleChange(event) {
-        this.setState({country: event.target.value});
+    handleChange(text) {
+        this.setState({country: text});
     }
 
     static navigationOptions = {
@@ -37,7 +37,7 @@ export default class SearchByCountry extends Component {
                     }}
                     placeholder="Country"
                     value={this.state.country}
-                    onChange={this.handleChange}
+                    onChangeText={this.handleChange}
                 />
                 <SearchButton 
                     onPress={() => navigate('Country', {country: this.state.country})}

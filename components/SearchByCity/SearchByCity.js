@@ -12,8 +12,8 @@ export default class SearchByCity extends Component {
     }
 
     // Event state change handler upon changing the value of the city
-    handleChange(event) {
-        this.setState({city: event.target.value});
+    handleChange(text) {
+        this.setState({city: text});
     }
 
     static navigationOptions = {
@@ -37,7 +37,7 @@ export default class SearchByCity extends Component {
                     }}
                     placeholder="City"
                     value={this.state.city}
-                    onChange={this.handleChange}
+                    onChangeText={this.handleChange}
                 />
                 <SearchButton 
                     onPress={() => navigate('City', {city: this.state.city})}

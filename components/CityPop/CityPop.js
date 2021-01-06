@@ -7,9 +7,15 @@ export default class CityPop extends Component {
 
     // Navigator design
     static navigationOptions = {
-        title: 'First Page',
+        title: 'CityPop',
         headerStyle: {
             backgroundColor: '#00a8cc',
+            color: '#ffffff',
+            paddingTop: 100,
+            paddingBottom: 75,
+            fontSize: 80,
+            fontFamily: 'Arial', 
+            fontWeight: 'bold'
         },
         headerTintColor: '#fff',
         headerTitleStyle: {
@@ -22,13 +28,6 @@ export default class CityPop extends Component {
         const { navigate } = this.props.navigation;
         return (
             <View style={styles.container}>
-                <header style={{
-                    color: '#ffffff',
-                    paddingTop: 100,
-                    paddingBottom: 75,
-                    fontSize: 80,
-                    fontFamily: 'Arial', 
-                    fontWeight: 'bold',}}>CityPop</header>
                 <FlatButton 
                     text='Search by city'
                     onPress={() =>navigate('SearchByCity')}

@@ -17,8 +17,11 @@ export default class Country extends Component {
             cityThree: 'unknown',
             code: 'P'
         }
-        this.getCountryData(props.route.params.country);
-    }
+    };
+
+    componentDidMount () {
+        this.getCountryData(this.state.country);
+    };
 
     static navigationOptions = {
         title: 'Country population',

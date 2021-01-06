@@ -14,7 +14,7 @@ const Stack = createStackNavigator();
 function MyStack() {
     return (
         <Stack.Navigator>
-            <Stack.Screen name=" " component={CityPop} />
+            <Stack.Screen name=" " component={CityPop} options={CityPop.navigationOptions} />
             <Stack.Screen name="SearchByCity" component={SearchByCity} />
             <Stack.Screen name="SearchByCountry" component={SearchByCountry} />
             <Stack.Screen name="City" component={City} />
