@@ -1,33 +1,29 @@
 import React, { Component } from 'react';
-import { StyleSheet, View } from 'react-native';
+import { StyleSheet, View, Text } from 'react-native';
 import SearchByCity from "../SearchByCity/SearchByCity";
 import SearchByCountry from "../SearchByCountry/SearchByCountry";
 import FlatButton from "../../Buttons/Button";
 export default class CityPop extends Component {
 
+    /*
     // Navigator design
     static navigationOptions = {
-        title: 'CityPop',
         headerStyle: {
-            backgroundColor: '#00a8cc',
-            color: '#ffffff',
-            paddingTop: 100,
-            paddingBottom: 75,
-            fontSize: 80,
-            fontFamily: 'Arial', 
-            fontWeight: 'bold'
-        },
-        headerTintColor: '#fff',
-        headerTitleStyle: {
-            fontWeight: 'bold',
-        },
-    };
+            backgroundColor: '#ffa41b',
+        }
+    };*/
 
     // Navigation screen structure
     render() {
         const { navigate } = this.props.navigation;
         return (
             <View style={styles.container}>
+                <Text style={{
+                    color: '#ffffff',
+                    paddingTop: 100,
+                    paddingBottom: 75,
+                    fontSize: 80, 
+                    fontWeight: 'bold',}}>CityPop</Text>
                 <FlatButton 
                     text='Search by city'
                     onPress={() =>navigate('SearchByCity')}
